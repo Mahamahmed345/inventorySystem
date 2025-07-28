@@ -48,23 +48,20 @@
 // app.listen(3002, () => console.log('🚀 Server running on port 3002'));
 
 
-// In your server/index.js or app.js file
-
 const express = require('express');
-const db = require('./db'); // or correct path to db.js
+const db = require('./db');
 const app = express();
+const PORT = process.env.PORT || 3002;
 
 app.get('/test-db', async (req, res) => {
   try {
-    const result = await db.query('SELECT 1 + 1 AS result');
-    res.send(`Database connected! Test result: ${result[0].result}`);
+    const rows = await db.query('SELECT 1 + 1 AS result');
+    res.json({ success: true, result: rows[0].result });
   } catch (err) {
-    console.error('DB connection error:', err);
-    res.status(500).send('Database connection failed');
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
-const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
