@@ -62,6 +62,10 @@ app.get('/test-db', async (req, res) => {
     res.status(500).json({ success: false, error: err.message || 'Unknown error' });
   }
 });
+app.get('/', async (req, res) => {
+  
+  return "hello world"
+});
 
 
 
