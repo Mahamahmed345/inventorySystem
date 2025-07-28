@@ -1,12 +1,14 @@
 // db.js
+require('dotenv').config(); // ✅ Load environment variables
 const mysql = require('mysql');
-const util = require('util'); // ✅ Add this
+const util = require('util');
 
 const db = mysql.createConnection({
-  user: 'root',
-  host: 'localhost',
-  password: '',
-  database: 'userdetails',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 // ✅ Add promise support for async/await
