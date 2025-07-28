@@ -21,11 +21,7 @@ const mysql = require('mysql2');
 const util = require('util');
 const url = require('url');
 
-// db.js
-require('dotenv').config();
-const mysql = require('mysql');
-const util = require('util');
-const url = require('url');
+
 
 let db;
 
