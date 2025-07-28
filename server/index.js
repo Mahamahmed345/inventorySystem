@@ -25,7 +25,9 @@ app.post('/signup', (req, res) => {
     res.send({ message: 'User added!' });
   });
 });
-
+app.get('/', (req, res) => {
+  res.send('Hello, world!');
+});
 // ✅ Login Route
 app.post('/login', (req, res) => {
   const { LoginEmail, LoginPassword } = req.body;
