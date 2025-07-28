@@ -58,9 +58,12 @@ app.get('/test-db', async (req, res) => {
     const rows = await db.query('SELECT 1 + 1 AS result');
     res.json({ success: true, result: rows[0].result });
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    console.error('DB Test Error:', err); // log full error
+    res.status(500).json({ success: false, error: err.message || 'Unknown error' });
   }
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);

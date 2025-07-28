@@ -1,7 +1,7 @@
 // // db.js
-// require('dotenv').config(); // ✅ Load environment variables
-// const mysql = require('mysql');
-// const util = require('util');
+require('dotenv').config(); // ✅ Load environment variables
+const mysql = require('mysql');
+const util = require('util');
 
 // const db = mysql.createConnection({
 //   host: process.env.DB_HOST,
@@ -15,25 +15,20 @@
 // db.query = util.promisify(db.query).bind(db);
 
 // module.exports = db;
-require('dotenv').config();
-const mysql = require('mysql');
-const util = require('util');
-const url = require('url');
+const isProduction = process.env.NODE_ENV === 'production';
 
 let dbConfig;
 
-if (process.env.DATABASE_URL) {
-  // ✅ If DATABASE_URL is provided (Railway)
+if (isProduction && process.env.DATABASE_URL) {
   const dbUrl = new URL(process.env.DATABASE_URL);
   dbConfig = {
     host: dbUrl.hostname,
     port: dbUrl.port,
     user: dbUrl.username,
     password: dbUrl.password,
-    database: dbUrl.pathname.replace('/', ''),
+    database: dbUrl.pathname.substring(1),
   };
 } else {
-  // ✅ Fallback to local .env configuration
   dbConfig = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -44,8 +39,6 @@ if (process.env.DATABASE_URL) {
 }
 
 const db = mysql.createConnection(dbConfig);
-
-// Add promise support
 db.query = util.promisify(db.query).bind(db);
 
 module.exports = db;
