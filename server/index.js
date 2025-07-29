@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 app.use(cors({
-  origin: "https://inventory-system-c8l8.vercel.app/",
+  origin: "https://inventory-system-c8l8.vercel.app",
   credentials: true
 }));
 
