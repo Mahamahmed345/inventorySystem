@@ -12,7 +12,7 @@ app.use(express.json());
 const cors = require("cors");
 
 app.use(cors({
-  origin: "https://your-frontend.vercel.app",
+  origin: "https://inventory-system-c8l8.vercel.app/",
   credentials: true
 }));
 
