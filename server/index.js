@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3002;
 const app = express();
 
 app.use(express.json());
-const cors = require("cors");
+
 
 app.use(cors({
   origin: "https://inventory-system-c8l8.vercel.app/",
