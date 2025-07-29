@@ -33,7 +33,7 @@ const Signup = () => {
       })
       .catch((err) => {
         console.error(err);
-        setSuccessMessage('Signup failed. Please try again.');
+        setSuccessMessage(`Signup failed. Please try again.${err}`);
       });
   };
 
