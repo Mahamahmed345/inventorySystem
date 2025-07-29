@@ -34,6 +34,7 @@ function App() {
         {/* Protected dashboard layout */}
         <Route path="/dashboard" element={<DashboardLayout />} />
         <Route path="/FileUpload" element={<FileUpload />} />
+        
 
       </Routes>
     </Router>
