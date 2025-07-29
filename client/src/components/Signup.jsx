@@ -15,7 +15,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const createUser = () => {
-    Axios.post('http://localhost:3002/signup', {
+    Axios.post('https://vibrant-integrity-production.up.railway.app/signup', {
       Email: email,
       Name: name,
       Password: password,

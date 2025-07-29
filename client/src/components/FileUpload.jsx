@@ -22,7 +22,7 @@ function FileUpload() {
     setMessage('');
 
     try {
-      const res = await axios.post('http://localhost:3002/import-excel', formData);
+      const res = await axios.post('https://vibrant-integrity-production.up.railway.app/import-excel', formData);
       setMessage(res.data.message);
       setValidatedData(res.data.validatedData || []);
       console.log('✅ ValidatedData:', res.data.validatedData);
